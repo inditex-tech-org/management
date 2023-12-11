@@ -1,7 +1,8 @@
 <?php
-//  vienen de un formulario
-$hardcodedUser = 'srvcZboost';
-$hardcodedPass = 'InditexTech@ZaraBoost2023';
+// Substituir por las credenciales que se pueden obtener del fichero de pruebas users.dump
+// Descifrar las passwords usando AES 128 ECB con la clave "aesEncryptionKey" y el vector de inicialización "encryptionIntVec" en https://www.javainuse.com/aesgenerator
+$hardcodedUser = '';
+$hardcodedPass = '';
  
 // datos enviados por el usuario
 $user = $_POST['username'] ?? '';
