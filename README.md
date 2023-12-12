@@ -64,8 +64,6 @@ Gone are the days of navigating through multiple disjointed systems and struggli
 
         System(SystemA, "Inditex Tech Management", "Allows users to read monitoring data and configure services. Administrators can manage services under technical incidents")
 
-
-        SystemDb(SystemB, "Inditex Tech Management Database", "A system of the bank, with personal bank accounts.")
         }
     
           Enterprise_Boundary(b5, "Inditex Corporate and Ecommerce Services") {
@@ -74,16 +72,12 @@ Gone are the days of navigating through multiple disjointed systems and struggli
 
         SystemDb(SystemD, "Zara checkout", "Allow customers to finish their orders in zara.com ")
 
-        System(SystemE, "Active Directory", "Manages accounts of Inditex employees")
-
         }
 
       Rel_U(customerA, SystemA, "Read data and configure services")
       Rel_U(customerC, SystemA, "Manage services")
-      Rel_U(SystemA, SystemB, "Uses")
       Rel_U(SystemA, SystemC, "Start/Stop")
       Rel_U(SystemA, SystemD, "Start/Stop")
-      Rel_U(SystemA, SystemE, "Start/Stop")
 
       UpdateElementStyle(customerC, $fontColor="red", $bgColor="grey", $borderColor="red")
       UpdateRelStyle(customerC, SystemA, $textColor="blue", $lineColor="blue", $offsetX="5")
@@ -98,7 +92,6 @@ Gone are the days of navigating through multiple disjointed systems and struggli
 * The supplier company uses only one user account to access the application, which it shares among its employees
 * We cannot rotate the password due to the risk of leaving the supplier company without access
 * TLS is an adequate mitigation for threats related to tampering and information disclosure of data in transit over the network
-* The database is only accessible by the application, and does not contain sensitive information 
 * Programmers follow secure development best practices and the corporate software lifecycle
 
 ### Threats
