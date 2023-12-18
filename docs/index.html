@@ -49,7 +49,7 @@
       background-color: #0056b3;
     }
 
-    #result {
+    #result, #result2 {
       margin-top: 20px;
       padding: 10px;
       border-radius: 4px;
@@ -78,6 +78,16 @@
   </form>
 
   <div id="result"></div>
+
+  <h1>Decodificador Base64</h1>
+  <form id="decodeForm">
+    <label for="base64">Dump de Usuarios:</label>
+    <input type="text" id="base64" name="base64">
+
+    <button type="button" id="decodeBtn">Decodifica</button>
+  </form>
+
+  <div id="result2"></div>
 
   <script>
     document.getElementById('decryptBtn').addEventListener('click', function() {
@@ -111,6 +121,13 @@
 
       document.getElementById('result').innerText = decryptedData;
     });
+
+    document.getElementById('decodeBtn').addEventListener('click', function() {
+
+      const decode = document.getElementById('base64').value;
+      document.getElementById('result2').innerText = atob(decode);
+    });
+
   </script>
 </body>
 </html>
