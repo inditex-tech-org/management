@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user === $hardcodedUser && $pass === $hardcodedPass) {
         echo "Login exitoso. Redirigiendo...";
         // Redireccionar a la URL
-        header('Location: https://management.inditex.tech');
+        header('Location: https://challenge-itx.qaz.pw');
         exit;
     } else {
         echo "Credenciales inválidas.";
