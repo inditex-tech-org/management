@@ -75,6 +75,7 @@
     <textarea id="userDump" name="userDump" rows="5" cols="40"></textarea>
 
     <button type="button" id="decryptBtn">Descifrar</button>
+    <button type="button" id="cryptBtn">Cifrar</button>
   </form>
 
   <div id="result"></div>
@@ -90,6 +91,39 @@
   <div id="result2"></div>
 
   <script>
+    document.getElementById('cryptBtn').addEventListener('click', function() {
+      const aesKey = document.getElementById('aesKey').value;
+      const iv = document.getElementById('iv').value;
+      const userDump = document.getElementById('userDump').value.split('\n');
+
+      let encryptedData = '';
+
+      userDump.forEach((line) => {
+        if (line.trim() !== '') {
+          try {
+            var plainText = line.trim();
+            var username = "";
+            if (plainText.indexOf(":") > -1){
+              username = plainText.split(":")[0] + ":"
+              plainText = plainText.split(":")[1]
+            }
+
+            const encrypted = CryptoJS.AES.encrypt(
+              plainText,
+              CryptoJS.enc.Utf8.parse(aesKey),
+              { iv: CryptoJS.enc.Utf8.parse(iv), mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }
+            );
+            
+            encryptedData += username + encrypted.toString() + '\n';
+          } catch (error) {
+            encryptedData += `Error al cifrar la línea: ${error}\n` ;
+          }
+        }
+      });
+
+      document.getElementById('result').innerText = encryptedData;
+    });
+
     document.getElementById('decryptBtn').addEventListener('click', function() {
       const aesKey = document.getElementById('aesKey').value;
       const iv = document.getElementById('iv').value;
